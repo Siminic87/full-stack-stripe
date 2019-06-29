@@ -128,3 +128,7 @@ a, a:hover {
         font-size: 80px;
     }
 }
+
+.comment {
+    margin: 20px 0px 20px 20px;
+}

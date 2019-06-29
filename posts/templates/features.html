@@ -32,7 +32,17 @@
                         <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-default">Read more</a></p>
                         <p><span class="boldtext">Type:</span> {{ post.type }}, <span class="boldtext">Status:</span> {{ post.status }}</p>
                         {% if user.is_authenticated %}
-                        <p><a href="upvote/{{ post.id }}/" class="btn btn-default">+</a></p>
+                        
+                        <form method="post" action={% url 'add_to_cart' post.id %}>
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input name="quantity" type="number" min="1" max="10" class="form-control" placeholder="Quantity">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">+</button>
+                            </span>
+                        </div>
+                        </form>
+                        
                         {% endif %}
                         
                     </div>

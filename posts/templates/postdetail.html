@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load comments %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-2 col-sm-3 text-center">
+            <a class="story-img" href="#">
+                <img src="/media/img/profile.jpg" class="img-circle">
+            </a>
+            <p><span class="boldtext">Author:</span> Niel</p>
+        </div>
+        <div class="col-sm-10 col-md-9">
+            {% if post.image %}
+                <img class="img-blogpost" src="/media/{{ post.image }}">
+            {% endif %}
+            <h3>{{ post.title }}</h3>
+            <div class="row">
+                <div class="col-xs-9">
+                    <p>{{ post.content }}</p>
+                    <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
+                    <p><span class="boldtext">Views:</span> {{post.views}}</p>
+                    <p><span class="boldtext">Category:</span> {{ post.category}}</p>
+                    <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
+                    <a href="{% url 'edit_post' post.id %}" class="btn btn-default">Edit Post</a>
+                    <hr>
+                    <p>{% render_comment_form for post %}</p>
+                        {% get_comment_count for post as comment_count %}
+                        {{ comment_count }} 
+                        
+                        {% get_comment_list for post as comment_list %}
+                    <hr>
+                        {% for comment in comment_list %}
+                        <p>Posted by: {{ comment.user_name }} on {{ comment.submit_date }}</p>
+                        ...
+                        <p>Comment: {{ comment.comment }}</p>
+                        ...
+                        {% endfor %}
+                    
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+{% endblock %}
