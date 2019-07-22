@@ -20,6 +20,7 @@ from .settings import MEDIA_ROOT
 from accounts import urls as urls_accounts
 from checkout import urls as urls_checkout
 from cart import urls as urls_cart
+from charts import urls as urls_charts
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -30,4 +31,5 @@ urlpatterns = [
     url(r'^comments/', include('django_comments.urls')),
     url(r'^cart/', include(urls_cart)),
     url(r'^checkout/', include(urls_checkout)),
+    url(r'^charts/', include(urls_charts)),
 ]

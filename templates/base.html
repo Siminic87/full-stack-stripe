@@ -2,12 +2,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Stack - Bootcamp Blog</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Ecommerce</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {% block head_js %}
+        {% endblock head_js %}
     </head>
+    
     <body>
         <!-- Fixed masthead -->
         <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
@@ -75,4 +80,5 @@
             </div>
         </footer>
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </html>
