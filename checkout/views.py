@@ -8,7 +8,7 @@ from django.utils import timezone
 from posts.models import Post, Voter
 import stripe
 
-stripe_api_key = settings.STRIPE_SECRET
+stripe.api_key = settings.STRIPE_SECRET
 
 @login_required()
 def checkout(request):
