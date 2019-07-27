@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% load comments %} {% block content %}
+
+<p>
+    <a href="{% url 'get_all' %}" class="btn btn-secondary active">All</a>
+    <a href="{% url 'get_features' %}" class="btn btn-secondary">Feature Requests</a>
+    <a href="{% url 'get_bugs' %}" class="btn btn-secondary">Bugs</a>
+</p>
+
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<hr> 
+
+{% for post in posts %}
+
+<div class="card border-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">{{ post.type }} ({{ post.status }})</div>
+  <div class="card-body">
+    <h4 class="card-title">{{ post.title }}</h4>
+    <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+    <p>
+        <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read more</a>
+    
+        {% if user.is_authenticated %}
+        <a href="upvote/{{ post.id }}/" class="btn btn-secondary">+</a>
+        {% endif %}
+    </p>
+  </div>
+</div>
+
+{% endfor %}
+<hr> 
+
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span> {% if contacts.has_next %}
+    <a href="?page={{ contacts.next_page_number }}">next</a>
+    <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a> {% endif %}
+    </span>
+</div>
+
+{% endblock %}

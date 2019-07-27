@@ -4,9 +4,6 @@ A simple blog app written using Django.
 
 [![Build Status](https://travis-ci.org/Siminic87/django-blog.svg?branch=master)](https://travis-ci.org/Siminic87/django-blog)
 
-https://tutorial-extensions.djangogirls.org/en/homework_create_more_models/
-https://stackoverflow.com/questions/38332868/restrict-each-user-to-only-vote-once-polls-django-python?noredirect=1&lq=1
-https://stackoverflow.com/questions/1984047/django-filter-older-than-days
 
 
 
@@ -28,7 +25,7 @@ The Online Marketing Issue Tracker is the best way to influence the course of de
 
 - As a user type, I want to get a quick overview of bugs and feature requests that have already been posted by users of MarketingMan.ie. 
 - As a user type, I want to be able to assess and vote on the urgency with which bugs and feature requests are developed.
-- As a user type I want to be able to post, edit and delete bugs and feature requests that I would like to have tended to. 
+- As a user type I want to be able to post, edit and delete bugs and feature requests that I would like to have tended to by the developers.
 
 ### Mockups:
 #### Desktop
@@ -45,53 +42,74 @@ The Online Marketing Issue Tracker is the best way to influence the course of de
 
 
 ## Features
-The Online Marketing - Issue Tracker has various features that intend to allow users to get a quick overview of various bugs and feature requests that have been requested by other users. Users can then also post on vote on bugs and feature requests that they poersonnally would like to see tended to. 
+The Online Marketing - Issue Tracker has various features that intend to allow users to get a quick overview of various bugs and feature requests that have been requested by other users. Users can then also post on vote on bugs and feature requests that they poersonnally would like to see tended to by the developers. 
 
 ### Existing Features
-- List of database entries – All tips are summarized on a list individual cards. Information contained on the cards is tip title, tip description, tip category, number of up/downvotes, date of publishing and edit and delete functionality via links. Results are ordered by number of upvotes in descending order.
+- User registration and authentication based on email and password.
+- List of database entries – All bugs and feature requests are summarized on a list individual cards on the main page. Information contained on the cards is tip title, tip description, tip category, number of up/downvotes, date of publishing and edit and delete functionality via links. Results are ordered by number of upvotes in descending order.
+- Filtering of results by category (bug vs. feature request).
+- Bugs and feature requests can be upvoted once per user. Payment required for upvoting feature request, but purchase of multiple upvotes possible. 
 - 
 
 
 
+- Posting and editing of new bugs and feature requests. DELETING?
+- Detail view of individual bugs and feature requests. 
+- Commenting on exising bugs and feature requests in detail view.
+- Summary graphs showing how many feature requests and bugs are tended to on a daily, weekly and monthly basis.
+- More information about service package on "about" page.
+
 All features fully responsive on mobile devices (incl. tablets and smartphones). 
 
 ### Features Left to Implement
-- Full User Authentication including email and password verification
-- Upvotes/Downvotes limited to just 1 per user
-- Date selection for new tips auto set to current date. No past or future dates possible.
+- Blog pages with developer updates.
+- Pagination?
+- 
+
+
+
 
 ## Technologies Used
 - HTML
     - The project uses HTML code to allow structuring and display of the information presented on MarketingMan.ie.
-- [Python](https://www.python.org/) & [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-    - The logic for rendering the various app routes is written in Python coding language. In order to streamline this process, the Flask is a micro web framework written in Python was used.
+- [Python](https://www.python.org/) & [Django](https://www.djangoproject.com/start/overview/)
+    - The logic for rendering the various app routes is written in Python coding language. In order to streamline this process, the Django web framework written in Python was used.
 - CSS
     - The project uses CSS code to visually design and animate the page's structure as defined by the HTML.
 - [Bootstrap](https://getbootstrap.com/docs/3.3/)
     - The project uses the Bootstrap framework (v. 3.3.7) to save time in development by relying on standardized HTML and CSS elements that can be found in the library.
+
+
 - [Materialize](http://archives.materializecss.com/0.100.2/)
     - The project uses the Materialize framework (v. 0.100.2) to save time in development by relying on standardized HTML and CSS elements that can be found in the library.
+    - 
+    - 
 - [jQuery](https://blog.jquery.com/2017/03/20/jquery-3-2-1-now-available/) & [Bootstrap javascript](https://getbootstrap.com/docs/3.3/getting-started/)
-    - The project uses jQuery (v. 3.2.1) and Boostrap javascript (v. 3.2.1) for animation and inclusion of portfolio carousel element.
-- [D3](https://d3js.org/) & [DC](https://dc-js.github.io/dc.js/)
-    - The project uses the D3 and DC javascript libraries for the purpose of summarising the databse entries on the portal.
-- [Crossfilter](https://github.com/crossfilter/crossfilter)
-    - The JavaScript library "Crossfilter" is used for grouping of data do that different charts can be compared based on results for selected data entries.
-- [mLab Database](https://mlab.com/)
-    - The project uses an mLab databse-as-a-service for storing the projects data and allowing manipulation of it. 
+    - The project uses jQuery (v. 3.2.1) and Boostrap javascript (v. 3.2.1) for enabling execution of stripe payment services.
+    - 
+    - 
+- [Stripe](https://pypi.org/project/stripe/)
+    - The project uses "stripe", a Python library for interacting with Stripe’s API (v. 2.32.1).
+- [Chart.js](https://d3js.org/)
+    - The project uses the chart.js javascript library for the purpose of visually summarising the databse entries on the portal (v. 2.8.0)
+- [Django Comments](https://github.com/crossfilter/crossfilter)
+    - The Django Comments framework can is used to attach comments to feature and bug posts. 
+- [Django Forms Bootstrap](https://mlab.com/)
+    - The Django Forms Bootstrap framework is used to easily apply bootsrap styling to all forms in the app.
 
 ## Testing
-1.  Quick overview of all posted Online Marketing tips / summary statistics
-    1. Go to SEO User Exchange homepage
-    2. Verify that summary statistics “total” and “new” display above tip card results and that “total” displays the total number of all results and “new” displays the number of results that were posted on the day of viewing the page.
-    3. Verify that tips are ordered in descending order according to number of upvotes and that only 5 results are shown per page and that the remaining results can be accessed via the pagination links.
+1.  Quick overview of all posted bugs and feature requests
+    1. Go to Online Marketing - Issue Tracker homepage
+    2. Verify that bugs and feature requests are ordered in descending order according to number of upvotes and that only 5 results are shown per page and that the remaining results can be accessed via the pagination links.
+    3. 
+    4. 
     4. Try to click on category links above results and verify that depending on selected category, only results for this category are displayed and that the summary statistics above the results change accordingly.
     5. Try to click on “summary” link in top navigation and verify that all 3 graphs (“Tips / Category”, “Upvotes / Tip” and “Tips / Date”) reflect current results and change dynamically when database is edited.
 
-Manual testing revealed that the “tips overview” and “summary pages” were integrated and visualised seamlessly. The pages are accessible on all devices and all major browsers and look virtually the same on different browsers.
+Manual testing revealed that the “overview” and “summary" were integrated and visualised seamlessly. The pages are accessible on all devices and all major browsers and look virtually the same on different browsers.
 
-2.	Assessing and voting on usefulness of tips
-    1. Go to SEO User Exchange homepage
+2.	Assessing and voting on urgency of bugs and feature requests
+    1. Go to Online Marketing - Issue Tracke homepage
     2. Try scrolling down results and verify that individual tip cards show number of received upvotes (See “Up:”).
     3. OR try to click on “Login” in main navigation and verify that individual tip cards now have an up- and downvote button.
     4. Try to click on either the up- or downvote button and verify that total number of upvotes of the chosen tip goes up or down accordingly.
@@ -131,3 +149,7 @@ The live site updates automatically each time there is a new push to its [GitHub
 ## Credits
 ### Filtering Categories
 Advice for filtering of tips categories ering of data charts from various pages of [stackoverflow.com](https://stackoverflow.com/)
+
+https://tutorial-extensions.djangogirls.org/en/homework_create_more_models/
+https://stackoverflow.com/questions/38332868/restrict-each-user-to-only-vote-once-polls-django-python?noredirect=1&lq=1
+https://stackoverflow.com/questions/1984047/django-filter-older-than-days

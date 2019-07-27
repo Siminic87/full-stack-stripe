@@ -48,10 +48,11 @@ class Post(models.Model):
     ]
     
     status = models.CharField(max_length=30, choices=STATUS_CHOICES, default="To Do")
+    author = models.ForeignKey(User, related_name='poster', on_delete=models.CASCADE)
     
     def __unicode__(self):
         return self.title
         
 class Voter(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, null=True, on_delete=models.CASCADE)

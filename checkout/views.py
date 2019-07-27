@@ -33,29 +33,27 @@ def checkout(request):
                     )
                 order_line_item.save()
                 
-            try:
-                customer = stripe.Charge.create(
-                    amount = int(total * 100),
-                    currency = "EUR",
-                    description = request.user.email,
-                    card = payment_form.cleaned_data['stripe_id'],
-                    )
-            except stripe.error.CardError:
-                messages.error(request, "Your card was declined!")
-                
-            if customer.paid:
-                messages.error(request, "You have successfully paid!")
-                request.session['cart'] = {}
-                
-                # increment upvotes by "quantity".
-                post = get_object_or_404(Post, pk=id)
-                post.upvotes += quantity
-                post.save()
-                Voter.objects.create(id=id, user_id=request.user.id)
-                
-                return redirect(reverse('get_posts'))
-            else:
-                messages.error(request, "Unable to make payment")
+                try:
+                    customer = stripe.Charge.create(
+                        amount = int(total * 100),
+                        currency = "EUR",
+                        description = request.user.email,
+                        card = payment_form.cleaned_data['stripe_id'],
+                        )
+                except stripe.error.CardError:
+                    messages.error(request, "Your card was declined!")
+                    
+                if customer.paid:
+                    messages.error(request, "You have successfully paid!")
+                    request.session['cart'] = {}
+                    
+                    # increment upvotes by "quantity".
+                    post.upvotes += quantity
+                    post.save()
+                    
+                    return redirect(reverse('get_posts'))
+                else:
+                    messages.error(request, "Unable to make payment")
         else:
             print(payment_form.errors)
             messages.error(request, "We were unable to take a payment with that card!")
